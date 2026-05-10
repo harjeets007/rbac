@@ -16,11 +16,6 @@ connectDB();
 server.post(
   "/webhook",
   express.raw({ type: "application/json" }),
-  (req, res, next) => {
-    console.log("Webhook route hit");
-    console.log("Headers:", req.headers["stripe-signature"]);
-    next();
-  },
   paymentController.stripeWebhook,
 );
 
